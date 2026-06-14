@@ -1,18 +1,22 @@
-import * as React from "react";
 import { cn } from "@/lib/utils";
 
-function Badge({ className, variant = "default", ...props }: React.HTMLAttributes<HTMLDivElement> & { variant?: "default" | "secondary" | "outline" | "success" | "warning" }) {
+interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  variant?: "default" | "blue" | "green" | "amber" | "slate";
+}
+
+export function Badge({ className, variant = "default", ...props }: BadgeProps) {
   const variants = {
-    default: "bg-primary/20 text-primary border-primary/30",
-    secondary: "bg-secondary text-secondary-foreground",
-    outline: "border border-border text-foreground",
-    success: "bg-green-500/20 text-green-400 border-green-500/30",
-    warning: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+    default: "bg-slate-100 text-slate-700",
+    blue: "bg-blue-50 text-blue-700",
+    green: "bg-green-50 text-green-700",
+    amber: "bg-amber-50 text-amber-700",
+    slate: "bg-slate-100 text-slate-600",
   };
+
   return (
-    <div
+    <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors",
+        "inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-medium",
         variants[variant],
         className
       )}
@@ -21,4 +25,13 @@ function Badge({ className, variant = "default", ...props }: React.HTMLAttribute
   );
 }
 
-export { Badge };
+export function StatusBadge({ status }: { status: "planned" | "in-progress" | "completed" | "upcoming" }) {
+  const map = {
+    planned: { label: "Planned", variant: "slate" as const },
+    "in-progress": { label: "In Progress", variant: "blue" as const },
+    completed: { label: "Completed", variant: "green" as const },
+    upcoming: { label: "Upcoming", variant: "slate" as const },
+  };
+  const { label, variant } = map[status] ?? map.planned;
+  return <Badge variant={variant}>{label}</Badge>;
+}

@@ -1,214 +1,244 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ArrowRight, Brain, Layers, Map, BarChart3, Compass, FolderKanban,
-  Sparkles, Bot, Database, GitBranch,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Container, Section, SectionHeading } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { FlowDiagram } from "@/components/diagrams/flow-diagram";
-import { useLearning } from "@/lib/learning-context";
-import { topics } from "@/data/topics";
-import { roadmapPhases } from "@/data/special-pages";
+import { ProjectCard, CategoryCard, RoadmapPhaseCard } from "@/components/content/content-cards";
+import {
+  siteConfig,
+  whyWebsiteExists,
+  roadmapPhases,
+  projects,
+  interviewCategories,
+  resourceCategories,
+} from "@/data/site";
+import { createMetadata } from "@/lib/metadata";
+import {
+  Brain,
+  Code,
+  Database,
+  MessageSquare,
+  Sparkles,
+  Bot,
+} from "lucide-react";
 
-const heroFlow = {
-  nodes: [
-    { id: "input", label: "User Query", type: "input" },
-    { id: "router", label: "AI Router" },
-    { id: "rag", label: "RAG Pipeline" },
-    { id: "agent", label: "Agent System" },
-    { id: "output", label: "Smart Response", type: "output" },
-  ],
-  edges: [
-    { source: "input", target: "router" },
-    { source: "router", target: "rag", label: "knowledge" },
-    { source: "router", target: "agent", label: "action" },
-    { source: "rag", target: "output" },
-    { source: "agent", target: "output" },
-  ],
+export const metadata = createMetadata({
+  title: siteConfig.name,
+  description:
+    "From Enterprise Applications to AI — Vivek Semwal documents his learning journey for professionals transitioning into AI.",
+  path: "/",
+});
+
+const iconMap: Record<string, React.ReactNode> = {
+  Brain: <Brain className="h-6 w-6" />,
+  Code: <Code className="h-6 w-6" />,
+  Database: <Database className="h-6 w-6" />,
+  MessageSquare: <MessageSquare className="h-6 w-6" />,
+  Sparkles: <Sparkles className="h-6 w-6" />,
+  Bot: <Bot className="h-6 w-6" />,
 };
 
-const features = [
-  { icon: Layers, title: "Interactive Diagrams", desc: "Mermaid & React Flow architecture visualizations" },
-  { icon: Map, title: "Learning Roadmap", desc: "Structured path from beginner to advanced" },
-  { icon: BarChart3, title: "Progress Tracking", desc: "Track reading progress and quiz scores" },
-  { icon: Compass, title: "Concept Explorer", desc: "23 topics with deep-dive content" },
-  { icon: FolderKanban, title: "Project Showcase", desc: "Student AI Mentor capstone project" },
-  { icon: Sparkles, title: "Knowledge Checks", desc: "Quizzes with detailed explanations" },
-];
-
 export default function HomePage() {
-  const { getOverallProgress, progress } = useLearning();
-  const overall = getOverallProgress();
-  const completedCount = Object.values(progress).filter((p) => p >= 80).length;
-
   return (
-    <div className="gradient-mesh min-h-screen">
-      <section className="relative overflow-hidden px-4 py-20 lg:px-8 lg:py-32">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <Badge className="mb-6">AI Engineering Encyclopedia</Badge>
-            <h1 className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-6xl lg:text-7xl">
-              AI Engineering Mastery Hub
+    <>
+      {/* Hero */}
+      <section className="border-b border-slate-200 bg-gradient-to-b from-blue-50/50 to-white">
+        <Container className="py-16 sm:py-24">
+          <div className="max-w-3xl">
+            <p className="text-sm font-medium text-blue-600">Learning in Public</p>
+            <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+              {siteConfig.tagline}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-              Learn, Build and Master Agentic AI Systems
+            <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+              I am <strong className="font-semibold text-slate-900">{siteConfig.author.name}</strong>, a{" "}
+              {siteConfig.author.role} documenting my journey of learning AI, automation, Python, and modern
+              software development.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button variant="gradient" size="lg" asChild>
-                <Link href="/topics/ai-fundamentals">
-                  Start Learning <ArrowRight className="h-4 w-4" />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link href="/ai-journey">
+                  Start Learning
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link href="/roadmap">View Roadmap</Link>
-              </Button>
-              <Button variant="ghost" size="lg" asChild>
-                <Link href="/architecture">Architecture Gallery</Link>
+              <Button asChild variant="secondary" size="lg">
+                <Link href="/projects">View Projects</Link>
               </Button>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-16"
-          >
-            <FlowDiagram nodes={heroFlow.nodes} edges={heroFlow.edges} className="h-[350px]" />
-          </motion.div>
-        </div>
+          </div>
+        </Container>
       </section>
 
-      <section className="px-4 py-16 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 grid gap-4 sm:grid-cols-3">
-            {[
-              { label: "Topics", value: topics.length, icon: Brain },
-              { label: "Your Progress", value: `${overall}%`, icon: BarChart3 },
-              { label: "Completed", value: completedCount, icon: Sparkles },
-            ].map((stat) => (
-              <Card key={stat.label} className="glass text-center">
-                <CardContent className="pt-6">
-                  <stat.icon className="mx-auto mb-2 h-6 w-6 text-primary" />
-                  <p className="text-3xl font-bold">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </CardContent>
-              </Card>
+      {/* Why This Website Exists */}
+      <Section id="why">
+        <Container>
+          <SectionHeading title={whyWebsiteExists.title} />
+          <div className="max-w-3xl space-y-4">
+            {whyWebsiteExists.paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 40)} className="text-base leading-relaxed text-slate-600">
+                {paragraph}
+              </p>
             ))}
           </div>
+        </Container>
+      </Section>
 
-          <h2 className="mb-8 text-2xl font-bold">Platform Features</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="glass h-full transition-transform hover:scale-[1.02]">
-                  <CardHeader>
-                    <f.icon className="mb-2 h-8 w-8 text-primary" />
-                    <CardTitle className="text-lg">{f.title}</CardTitle>
-                    <CardDescription>{f.desc}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-16 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="mb-8 text-2xl font-bold">Learning Roadmap Preview</h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {/* Roadmap Preview */}
+      <Section alt id="roadmap">
+        <Container>
+          <SectionHeading
+            title="My AI Learning Roadmap"
+            subtitle="A simple, phased approach — no rush, no overwhelm. One step at a time."
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {roadmapPhases.map((phase) => (
-              <Card key={phase.phase} className="glass overflow-hidden">
-                <div className={`h-1 bg-gradient-to-r ${phase.color}`} />
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge variant="outline">Phase {phase.phase}</Badge>
-                    <span className="text-xs text-muted-foreground">{phase.duration}</span>
-                  </div>
-                  <CardTitle>{phase.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-1">
-                    {phase.topics.map((t) => (
-                      <li key={t} className="text-sm text-muted-foreground">• {t}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+              <RoadmapPhaseCard
+                key={phase.phase}
+                phase={phase.phase}
+                title={phase.title}
+                topics={phase.topics}
+                status={phase.status}
+              />
             ))}
           </div>
-          <div className="mt-6 text-center">
-            <Button variant="outline" asChild>
-              <Link href="/roadmap">Full Interactive Roadmap <ArrowRight className="h-4 w-4" /></Link>
+          <div className="mt-8 text-center">
+            <Button asChild variant="secondary">
+              <Link href="/ai-journey">See Full Journey</Link>
             </Button>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="px-4 py-16 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="mb-8 text-2xl font-bold">Popular Topics</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {topics.slice(0, 8).map((topic) => (
-              <Link key={topic.slug} href={`/topics/${topic.slug}`}>
-                <Card className="glass h-full transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10">
-                  <CardHeader>
-                    <CardTitle className="text-base">{topic.title}</CardTitle>
-                    <CardDescription className="line-clamp-2">{topic.subtitle}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex gap-2">
-                      <Badge variant="outline">{topic.difficulty}</Badge>
-                      <Badge variant="secondary">{topic.estimatedTime}</Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+      {/* Projects Preview */}
+      <Section id="projects">
+        <Container>
+          <SectionHeading
+            title="Projects"
+            subtitle="I learn by building. These are the projects I am working on or planning — shared openly, wins and struggles included."
+          />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
             ))}
           </div>
-        </div>
-      </section>
+          <div className="mt-8 text-center">
+            <Button asChild variant="secondary">
+              <Link href="/projects">All Projects</Link>
+            </Button>
+          </div>
+        </Container>
+      </Section>
 
-      <section className="px-4 py-16 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <Card className="glass overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20 p-8 text-center md:p-12">
-              <Bot className="mx-auto mb-4 h-12 w-12 text-primary" />
-              <h2 className="text-2xl font-bold md:text-3xl">Student AI Mentor Project</h2>
-              <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-                Capstone project integrating RAG, Agents, Multi-Agent Systems, and full-stack deployment.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                {[Database, GitBranch, Bot].map((Icon, i) => (
-                  <div key={i} className="flex items-center gap-2 rounded-full border border-border/50 px-3 py-1 text-xs">
-                    <Icon className="h-3 w-3 text-primary" />
-                    {["RAG Pipeline", "Agent Architecture", "Multi-Agent"][i]}
-                  </div>
-                ))}
+      {/* Interview Prep Preview */}
+      <Section alt id="interview">
+        <Container>
+          <SectionHeading
+            title="Interview Preparation"
+            subtitle="Notes I am collecting while preparing for AI-related roles — organized by topic, explained simply."
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {interviewCategories.map((cat) => (
+              <CategoryCard
+                key={cat.slug}
+                title={cat.title}
+                description={cat.description}
+                href={`/interview-notes/${cat.slug}`}
+                icon={iconMap[cat.icon]}
+              />
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild variant="secondary">
+              <Link href="/interview-notes">All Interview Notes</Link>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Resources Preview */}
+      <Section id="resources">
+        <Container>
+          <SectionHeading
+            title="Learning Resources"
+            subtitle="Books, courses, tools, and channels that have helped me — or that I plan to explore next."
+          />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {resourceCategories.slice(0, 4).map((cat) => (
+              <div key={cat.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="font-semibold text-slate-900">{cat.title}</h3>
+                <p className="mt-1 text-sm text-slate-600">{cat.description}</p>
+                <ul className="mt-4 space-y-2">
+                  {cat.items.slice(0, 3).map((item) => (
+                    <li key={item.name} className="text-sm text-slate-600">
+                      • {item.name}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <Button variant="gradient" className="mt-8" asChild>
-                <Link href="/project/student-ai-mentor">Explore Capstone Project</Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild variant="secondary">
+              <Link href="/resources">All Resources</Link>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* About Preview */}
+      <Section alt id="about">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <SectionHeading
+              title="About Me"
+              subtitle={siteConfig.author.bio}
+              centered
+            />
+            <dl className="mt-8 grid gap-4 text-left sm:grid-cols-2">
+              <div className="rounded-lg border border-slate-200 bg-white p-4">
+                <dt className="text-sm font-medium text-slate-500">Name</dt>
+                <dd className="mt-1 font-semibold text-slate-900">{siteConfig.author.name}</dd>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white p-4">
+                <dt className="text-sm font-medium text-slate-500">Role</dt>
+                <dd className="mt-1 font-semibold text-slate-900">{siteConfig.author.role}</dd>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white p-4 sm:col-span-2">
+                <dt className="text-sm font-medium text-slate-500">Experience</dt>
+                <dd className="mt-1 text-slate-900">{siteConfig.author.experience}</dd>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white p-4 sm:col-span-2">
+                <dt className="text-sm font-medium text-slate-500">Current Focus</dt>
+                <dd className="mt-1 text-slate-900">{siteConfig.author.focus}</dd>
+              </div>
+            </dl>
+            <Button asChild className="mt-8">
+              <Link href="/about">Read More About Me</Link>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Contact CTA */}
+      <Section id="contact">
+        <Container>
+          <div className="rounded-2xl border border-blue-100 bg-blue-50/50 p-8 text-center sm:p-12">
+            <h2 className="text-2xl font-semibold text-slate-900">Let&apos;s Connect</h2>
+            <p className="mx-auto mt-3 max-w-lg text-slate-600">
+              Learning AI is better together. Connect with me on GitHub or visit my portfolio.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Button asChild>
+                <a href={siteConfig.links.github} target="_blank" rel="noopener noreferrer">
+                  GitHub Profile
+                </a>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/contact">Contact Page</Link>
               </Button>
             </div>
-          </Card>
-        </div>
-      </section>
-    </div>
+          </div>
+        </Container>
+      </Section>
+    </>
   );
 }
