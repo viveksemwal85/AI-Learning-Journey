@@ -8,16 +8,16 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "About Me",
   description:
-    "Vivek Semwal — Development Manager with 15+ years in enterprise applications, now learning AI in public.",
+    "Vivek Semwal — Project Manager with 18+ years in enterprise applications, now learning AI in public.",
   path: "/about",
 });
 
 const background = [
-  "PeopleSoft HCM implementations and upgrades",
-  "Enterprise integration (SAP, Oracle, Java, .NET)",
-  "Leading development teams and delivery",
-  "Requirements gathering and solution design",
-  "Production support and incident management",
+  "Project Manager leading cross-functional development and delivery teams",
+  "Product Owner responsible for product vision, backlog prioritization, and stakeholder management",
+  "Requirements gathering, business analysis, and solution design for enterprise applications",
+  "PeopleSoft HCM implementations, upgrades, and application modernization initiatives",
+  "Driving AI, automation, and process improvement initiatives across enterprise platforms"
 ];
 
 const learningNow = [
@@ -54,7 +54,7 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <SectionHeading title="My Background" subtitle="What I bring from 15+ years in enterprise tech" />
+              <SectionHeading title="My Background" subtitle="What I bring from 18+ years in enterprise tech" />
               <ul className="space-y-2">
                 {background.map((item) => (
                   <li key={item} className="flex gap-3 text-slate-600">
@@ -80,9 +80,9 @@ export default function AboutPage() {
             <div>
               <SectionHeading title="Why I Built This Website" />
               <p className="text-base leading-relaxed text-slate-600">
-                I could not find a learning resource that spoke to someone coming from PeopleSoft and enterprise
-                Java — everything assumed I already knew Python and machine learning. So I decided to document
-                my journey openly. If it helps even one person feel less lost, it is worth it.
+                Project Manager | Product Owner | Technology Leader
+
+				I lead cross-functional teams delivering enterprise application solutions, with responsibilities spanning project management, product ownership, requirement gathering, solution design, stakeholder engagement, and delivery governance. Alongside my professional responsibilities, I am actively exploring AI, automation, and modern software engineering practices to drive innovation and operational efficiency.
               </p>
             </div>
 

@@ -48,11 +48,23 @@ export interface SiteConfig {
   footer: string;
 }
 
+export interface ConceptFlowStep {
+  step: number;
+  title: string;
+  description: string;
+}
+
+export interface ConceptHowItWorks {
+  summary: string;
+  steps: ConceptFlowStep[];
+}
+
 export interface TechConcept {
   name: string;
   fullForm: string;
   explanation: string;
   example: string;
+  howItWorks?: ConceptHowItWorks;
 }
 
 export interface ConceptCategory {

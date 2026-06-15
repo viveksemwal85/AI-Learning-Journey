@@ -6,9 +6,9 @@ export const siteConfig: SiteConfig = {
   author: {
     name: "Vivek Semwal",
     role: "Development Manager",
-    experience: "15+ years in enterprise applications and PeopleSoft HCM",
+    experience: "18+ years in enterprise applications and PeopleSoft HCM",
     focus: "Learning AI, Python automation, and modern software engineering practices",
-    bio: "I have spent over 15 years building and managing enterprise applications — PeopleSoft, SAP integrations, Oracle databases, Java, and .NET systems. Now I am learning AI the same way I learned everything else: step by step, by building real projects and sharing what I learn along the way.",
+    bio: "I have spent over 18 years building and managing enterprise applications — PeopleSoft, MSSQL, Oracle databases, Java, and .NET systems. Now I am learning AI the same way I learned everything else: step by step, by building real projects and sharing what I learn along the way.",
   },
   links: {
     github: "https://github.com/viveksemwal85",
@@ -189,10 +189,7 @@ export const resourceCategories: ResourceCategory[] = [
 export const whyWebsiteExists = {
   title: "Why This Website Exists",
   paragraphs: [
-    "If you have spent years working in PeopleSoft, SAP, Oracle, Java, or .NET — and now want to learn AI — you are not alone. Many experienced professionals feel overwhelmed by where to start.",
-    "There is no shortage of AI content online, but most of it assumes you already know Python, machine learning, or data science. That is not helpful when you are starting from enterprise applications.",
-    "This website documents my real learning journey — what I studied, what confused me, what finally clicked, and what I built along the way. No pretending to be an expert. Just honest progress, shared openly.",
-    "Whether you are a student, a working professional making a career shift, or someone preparing for AI-related interviews — I hope this helps you feel less alone in the process.",
+    "When I began exploring AI, I found that most learning resources were designed for software engineers and data scientists who already had strong backgrounds in Python, machine learning, and modern development frameworks. Coming from an enterprise applications and PeopleSoft background, I struggled to find practical guidance tailored to professionals making a similar transition. This website is my way of documenting that journey—sharing what I learn, the projects I build, the challenges I face, and the lessons I discover along the way. If my experiences help even one person navigate their own path into AI with greater clarity and confidence, then this effort is worthwhile."
   ],
 };
 

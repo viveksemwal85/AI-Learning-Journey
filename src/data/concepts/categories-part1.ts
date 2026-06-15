@@ -14,7 +14,55 @@ export const authenticationSecurity: ConceptCategory = {
       "Session Management",
       NA,
       "Session management remembers that you are logged in while you use an application. It creates a session after login and expires it after a timeout or logout.",
-      "You log into your company's timesheet system at 9 AM and work until lunch without re-entering your password — session management keeps you signed in safely."
+      "You log into your company's timesheet system at 9 AM and work until lunch without re-entering your password — session management keeps you signed in safely.",
+      {
+        summary:
+          "When you log in, the server creates a session — a temporary record that says 'this user is authenticated.' Your browser stores a session ID (usually in a cookie) and sends it back with every request so the server knows who you are without asking for your password again.",
+        steps: [
+          {
+            step: 1,
+            title: "User logs in",
+            description:
+              "You enter your username and password on the login page and submit the form.",
+          },
+          {
+            step: 2,
+            title: "Server validates credentials",
+            description:
+              "The server checks your username and password against the database. If they are correct, login is approved.",
+          },
+          {
+            step: 3,
+            title: "Server creates a session",
+            description:
+              "The server creates a unique session ID and stores it in server memory or a database, linked to your user account and login time.",
+          },
+          {
+            step: 4,
+            title: "Session ID sent to browser",
+            description:
+              "The server sends the session ID to your browser, usually as a cookie (a small file the browser saves and sends automatically).",
+          },
+          {
+            step: 5,
+            title: "Browser sends session ID on each request",
+            description:
+              "Every time you click a page or button, your browser automatically includes the session ID. You do not re-enter your password.",
+          },
+          {
+            step: 6,
+            title: "Server validates the session",
+            description:
+              "The server looks up the session ID. If it is valid and not expired, your request is allowed. If not, you are redirected to login.",
+          },
+          {
+            step: 7,
+            title: "Session ends",
+            description:
+              "The session ends when you log out, after a timeout (e.g. 30 minutes of inactivity), or when the server invalidates it for security.",
+          },
+        ],
+      }
     ),
     c(
       "Identity Provider",

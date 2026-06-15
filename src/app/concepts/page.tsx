@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/layout/page-header";
+import { ConceptHowItWorksSection } from "@/components/concepts/concept-how-it-works";
 import { conceptCategories, conceptsIntro } from "@/data/concepts";
 import { createMetadata } from "@/lib/metadata";
 
@@ -88,6 +89,10 @@ export default function ConceptsPage() {
                         </dd>
                       </div>
                     </dl>
+
+                    {concept.howItWorks && (
+                      <ConceptHowItWorksSection howItWorks={concept.howItWorks} />
+                    )}
                   </div>
                 ))}
               </div>
