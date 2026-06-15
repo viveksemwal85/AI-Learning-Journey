@@ -22,6 +22,7 @@ export const navigation: NavItem[] = [
   { label: "AI Journey", href: "/ai-journey" },
   { label: "Projects", href: "/projects" },
   { label: "Interview Notes", href: "/interview-notes" },
+  { label: "Concepts", href: "/concepts" },
   { label: "Resources", href: "/resources" },
   { label: "About Me", href: "/about" },
   { label: "Contact", href: "/contact" },

@@ -47,3 +47,15 @@ export interface SiteConfig {
   };
   footer: string;
 }
+
+export interface TechConcept {
+  name: string;
+  fullForm: string;
+  explanation: string;
+  example: string;
+}
+
+export interface ConceptCategory {
+  title: string;
+  concepts: TechConcept[];
+}
