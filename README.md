@@ -1,49 +1,28 @@
 # AI Learning Journey
 
-Personal website documenting the transition from enterprise applications to AI — built by [Vivek Semwal](https://github.com/viveksemwal85).
+A website documenting my journey from Enterprise Applications to AI.
 
-**Live site:** [ai-engineering-hub-lovat.vercel.app](https://ai-engineering-hub-lovat.vercel.app)
+## About Me
 
-## About
+Hi, I'm Vivek Semwal.
 
-A clean, beginner-friendly learning hub for professionals moving from legacy tech (PeopleSoft, SAP, Oracle, Java, .NET) into AI. Covers roadmap, projects, interview notes, and curated resources.
+I am a Development Manager with experience in PeopleSoft HCM and enterprise applications. This website documents my journey of learning AI, Python automation, and modern software engineering.
+
+## Portfolio
+
+https://vivek-semwal.vercel.app
+
+## Topics Covered
+
+- AI Fundamentals
+- Python Automation
+- AI Projects
+- Interview Preparation
+- Learning Resources
 
 ## Tech Stack
 
-- Next.js 16 (App Router)
+- Next.js
 - TypeScript
-- Tailwind CSS v4
-
-## Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-## Build
-
-```bash
-npm run build
-npm start
-```
-
-## Project Structure
-
-```
-src/
-├── app/           # Pages
-├── components/    # UI and layout
-├── data/site.ts   # Site content (edit here)
-├── lib/           # Utilities
-└── types/         # TypeScript types
-```
-
-## Author
-
-**Vivek Semwal** — Development Manager | PeopleSoft HCM | AI & Python Automation
-
-- GitHub: [@viveksemwal85](https://github.com/viveksemwal85)
-- Portfolio: [vivek-semwal.vercel.app](https://vivek-semwal.vercel.app)
+- Tailwind CSS
+- Vercel
