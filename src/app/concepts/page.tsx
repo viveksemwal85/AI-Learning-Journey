@@ -25,8 +25,14 @@ export default function ConceptsPage() {
 
       <div className="border-b border-slate-200 bg-white">
         <Container className="py-6">
-          <p className="text-sm font-medium text-slate-700">Jump to section:</p>
-          <nav aria-label="Concept categories" className="mt-2 flex flex-wrap gap-2">
+          <p className="text-sm font-medium text-slate-700">
+            {conceptCategories.length} categories ·{" "}
+            {conceptCategories.reduce((n, cat) => n + cat.concepts.length, 0)} concepts
+          </p>
+          <nav
+            aria-label="Concept categories"
+            className="mt-3 max-h-32 overflow-y-auto flex flex-wrap gap-2"
+          >
             {conceptCategories.map((category) => (
               <Link
                 key={category.title}
