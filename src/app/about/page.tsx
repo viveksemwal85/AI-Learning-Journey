@@ -80,7 +80,7 @@ export default function AboutPage() {
             <div>
               <SectionHeading title="Why I Built This Website" />
               <p className="text-base leading-relaxed text-slate-600">
-                Project Manager | Product Owner | Technology Leader
+                <b>Project Manager | Product Owner | Technology Leader</b> <br>
 
 				I lead cross-functional teams delivering enterprise application solutions, with responsibilities spanning project management, product ownership, requirement gathering, solution design, stakeholder engagement, and delivery governance. Alongside my professional responsibilities, I am actively exploring AI, automation, and modern software engineering practices to drive innovation and operational efficiency.
               </p>

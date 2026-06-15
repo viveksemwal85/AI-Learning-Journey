@@ -5,7 +5,7 @@ export const siteConfig: SiteConfig = {
   tagline: "From Enterprise Applications to AI",
   author: {
     name: "Vivek Semwal",
-    role: "Development Manager",
+    role: "Project Manager",
     experience: "18+ years in enterprise applications and PeopleSoft HCM",
     focus: "Learning AI, Python automation, and modern software engineering practices",
     bio: "I have spent over 18 years building and managing enterprise applications — PeopleSoft, MSSQL, Oracle databases, Java, and .NET systems. Now I am learning AI the same way I learned everything else: step by step, by building real projects and sharing what I learn along the way.",
