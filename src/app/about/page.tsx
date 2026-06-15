@@ -77,14 +77,33 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div>
-              <SectionHeading title="Why I Built This Website" />
-              <p className="text-base leading-relaxed text-slate-600">
-                <b>Project Manager | Product Owner | Technology Leader</b> <br>
+			   <div>
+			  <SectionHeading title="Why I Built This Website" />
 
-				I lead cross-functional teams delivering enterprise application solutions, with responsibilities spanning project management, product ownership, requirement gathering, solution design, stakeholder engagement, and delivery governance. Alongside my professional responsibilities, I am actively exploring AI, automation, and modern software engineering practices to drive innovation and operational efficiency.
-              </p>
-            </div>
+			  <p className="text-base leading-relaxed text-slate-600">
+				<strong>Project Manager | Product Owner | Technology Leader</strong>
+				<br /><br />
+
+				I lead cross-functional teams delivering enterprise application solutions,
+				with responsibilities spanning project management, product ownership,
+				requirements gathering, solution design, stakeholder engagement, and
+				delivery governance.
+
+				<br /><br />
+
+				Alongside my professional responsibilities, I am actively exploring
+				Artificial Intelligence (AI), automation, cloud technologies, and modern
+				software engineering practices to drive innovation and operational
+				efficiency.
+
+				<br /><br />
+
+				This website documents my learning journey and shares technology concepts,
+				AI engineering topics, interview preparation notes, and practical insights
+				in a way that is easy for both technical and non-technical professionals to
+				understand.
+			  </p>
+	</div>
 
             <div className="flex flex-wrap gap-3">
               <Button asChild>
